@@ -72,7 +72,7 @@ class UsersController < ProtectedController
   def user_creds
     params.require(:credentials)
           .permit(:email, :password, :password_confirmation,user_profile_attributes: [
-            :first_name, :last_name, :username, :phone_number
+            :id, :first_name, :last_name, :username, :phone_number
           ])
   end
 
@@ -83,6 +83,8 @@ class UsersController < ProtectedController
 
   def user_params
     params.require(:user)
-          .permit(:email)
+          .permit(:email, user_profile_attributes: [ :id,
+            :first_name, :last_name, :username, :phone_number
+          ])
   end
 end
