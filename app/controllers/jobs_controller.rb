@@ -3,8 +3,11 @@ class JobsController < OpenReadController
 
   # GET /jobs
   def index
-    @jobs = Job.all
-
+    if(params[:status])
+      @jobs = Job.where(status: params[:status])
+    else
+      @jobs = Job.all
+    end
     render json: @jobs
   end
 
