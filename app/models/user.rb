@@ -5,4 +5,5 @@ class User < ApplicationRecord
   has_one :user_profile
   validates_presence_of :user_profile
   accepts_nested_attributes_for :user_profile
+  has_many :jobs
 end
